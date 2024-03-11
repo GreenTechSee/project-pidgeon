@@ -7,7 +7,7 @@ def excel_to_json_pandas(excel_file, sheet_name="Sheet1"):
 
   return json_data
 
-excel_file = "your_excel_file.xlsx"
+excel_file = "test.csv"
 json_data = excel_to_json_pandas(excel_file)
 
 # Print the JSON data
