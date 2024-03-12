@@ -5,8 +5,43 @@
 @import "primeicons/primeicons.css";
 @import "@fontsource/source-sans-3";
 
+// Define custom colors
+$primary: #E07A5F;
+$primary2: #3D405B;
+$secondary: #CCFFBB;
+
+// Apply custom colors using CSS variables
+:root {
+  --primary: #{$primary};
+  --primary2: #{$primary2};
+  --secondary: #{$secondary};
+}
 body {
   font-family: "Source Sans 3", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+}
+
+.primary-color {
+  color: $primary;
+}
+
+.primary2-color {
+  color: $primary2;
+}
+.secondary-color {
+  color: $secondary;
+}
+
+.primary-background {
+  background-color: $primary;
+}
+
+.primary2-background {
+  background-color: $primary2;
+}
+
+.secondary-background {
+  background-color: $secondary;
 }

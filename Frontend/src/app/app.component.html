@@ -8,7 +8,13 @@
 
 
 @if (!loading()) {
-  <app-topbar></app-topbar>
+  <!-- <app-topbar></app-topbar> -->
+  <div class="primary-background w-full h-4rem flex align-items-center">
+    <div class="p-1 cursor-pointer">
+      <img src="../../../assets/images/blocks/logos/pp-logo.svg" alt="logo" aria-hidden="true" height="40" class="mr-2"
+        (click)="navigateToHome()" />
+    </div>
+  </div>
   <section class="container">
     <!-- <app-sidebar class="sidebar"></app-sidebar> -->
     <div class="main-body">

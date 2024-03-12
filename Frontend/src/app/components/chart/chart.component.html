@@ -1,6 +1,11 @@
-<div class="container w-full flex align-items-center justify-content-center">
-  <div class="w-8">
-    <ag-charts-angular style="height: 100%" [options]="chartOptions">
-    </ag-charts-angular>
-  </div>
+<div class="">
+
+  @if (!loading) {
+    <div class="flex align-items-center justify-content-center">
+      <div class="w-8 chart-container border-3 border-round border-300">
+        <ag-charts-angular style="height: 100%;" [options]="chartOptions">
+        </ag-charts-angular>
+      </div>
+    </div>
+  }
 </div>

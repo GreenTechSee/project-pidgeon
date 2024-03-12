@@ -1,5 +1,5 @@
 import { Component, OnInit, WritableSignal, signal } from '@angular/core';
-import { NavigationEnd, Router, RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { TestComponent } from "./pages/test/test.component";
 import { PrimeNGConfig } from 'primeng/api';
 import { TranslateService } from '@ngx-translate/core';
@@ -32,13 +32,6 @@ export class AppComponent implements OnInit {
   ) { }
 
   async ngOnInit(): Promise<void> {
-    this.router.events.subscribe((event) => {
-      if (event instanceof NavigationEnd) {
-        if (event.url === '/dashboard') {
-          this.onDashboardRoute();
-        }
-      }
-    })
     this.primengConfig.ripple = true;
     this.tr.use(this.userLanguage);
     document.documentElement.lang = this.userLanguage;
@@ -54,7 +47,7 @@ export class AppComponent implements OnInit {
       });
   }
 
-  async onDashboardRoute() {
-    
+  navigateToHome() {
+    this.router.navigate(['/']);
   }
 }
