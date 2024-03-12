@@ -44,8 +44,8 @@ export class TopbarComponent {
 
   constructor(private router: Router) { }
 
-  navigateToDashboard() {
-    this.router.navigate(['/dashboard']);
+  navigateToHome() {
+    this.router.navigate(['/']);
   }
 
 }

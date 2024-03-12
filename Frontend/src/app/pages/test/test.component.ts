@@ -8,6 +8,9 @@ import { LoggerService } from '../../services/logger.service';
 import { AgChartsAngular } from 'ag-charts-angular';
 import { AgChartOptions } from 'ag-charts-community';
 import { ChartComponent } from '../../components/chart/chart.component';
+// Lottie
+import { AnimationItem } from 'lottie-web';
+import { LottieComponent, AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'app-test',
@@ -18,7 +21,8 @@ import { ChartComponent } from '../../components/chart/chart.component';
     TranslateModule, 
     RippleModule,
     AgChartsAngular,
-    ChartComponent
+    ChartComponent,
+    LottieComponent
   ],
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss'
@@ -26,6 +30,12 @@ import { ChartComponent } from '../../components/chart/chart.component';
 export class TestComponent {
   readonly #logger = inject(LoggerService);
   http = inject(HttpClient);
+
+  //lottie
+  lottieOptions: AnimationOptions = {
+    path: '../../assets/anim/pp-lottie.json',
+    
+  }
 
   public chartOptions: AgChartOptions;
 
@@ -48,5 +58,9 @@ export class TestComponent {
       // Series: Defines which chart type and data to use
       series: [{ type: 'bar', xKey: 'month', yKey: 'iceCreamSales' }]
     };
+  }
+
+  animationCreated(animationItem: AnimationItem): void {
+    console.log(animationItem);
   }
 }

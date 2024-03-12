@@ -11,6 +11,7 @@ import { errorInterceptor } from './interceptors/error.interceptor';
 import { loggerInterceptor } from './interceptors/logger.interceptor';
 import { MessageService } from 'primeng/api';
 import { provideStore } from '@ngrx/store';
+import { provideLottieOptions } from 'ngx-lottie';
 
 export function createTranslateLoader(http: HttpClient): TranslateLoader {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -38,6 +39,9 @@ export const appConfig: ApplicationConfig = {
         }
     })),
     { provide: LOCALE_ID, useValue: 'en' },
+    provideLottieOptions({
+      player: () => import('lottie-web'),
+    }),
     MessageService,
     provideStore()
 ],
