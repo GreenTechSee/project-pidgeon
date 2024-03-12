@@ -3,9 +3,10 @@
 @import "primeng/resources/primeng.css";
 @import "primeflex/primeflex.css";
 @import "primeicons/primeicons.css";
+@import "@fontsource/source-sans-3";
 
 body {
-  font-family: var(--font-family);
+  font-family: "Source Sans 3", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
