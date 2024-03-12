@@ -9,7 +9,7 @@ def csv_to_json(csv_file):
 
   return result
 
-csv_file = "Oppdrett.csv" #*csv file to be read is specified here*
+csv_file = "Oppdrett.csv" #*csv fsile to be read is specified here*
 csv_to_json_result = csv_to_json(csv_file) #Converts the csv contents into the wanted "records"-format using the "csv_to_json"-function.
 json_data = json.dumps(csv_to_json_result, indent=4) #Converts the "csv_to_json_result" into JSON data with "indent=4" for a more readable result.
 
@@ -17,5 +17,5 @@ print(json_data) #Prints the JSON data.
 
 #Exports the JSON data by creating a JSON file in the current directory.
 with open('JSON.json','w', encoding='utf-8') as output_file:
-  output_file.write(json.dumps(json_data))
+  output_file.write(json_data)
   print('JSON file Generated.')
