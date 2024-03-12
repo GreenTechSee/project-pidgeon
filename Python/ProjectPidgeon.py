@@ -22,7 +22,7 @@ def csv_to_json(csv_file):
     
     return organized_data  #Returns the JSON data organized by day.
 
-csv_file = "Oppdrett.csv" #*Specify the CSV file to be read here*.
+csv_file = "Steamanlegg_elkjel2.csv" #*Specify the CSV file to be read here*.
 filename, extension = csv_file.split(".") #Splits "csv_file" into filename and extension (before and after ".").
 
 #Uses the "csv_to_json"-function to converts the CSV data to JSON.
