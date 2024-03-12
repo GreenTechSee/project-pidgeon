@@ -18,8 +18,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     imports: [RouterOutlet, TestComponent, ProgressSpinnerModule, TopbarComponent, SidebarComponent]
 })
 export class AppComponent implements OnInit {
-  title = 'Secmap-Guard';
-  userLanguage = 'en';
+  title = 'Peak Pidgon';
+  userLanguage = 'no';
   loading = signal(true);
   isLoggedIn: WritableSignal<boolean> = signal(false);
 

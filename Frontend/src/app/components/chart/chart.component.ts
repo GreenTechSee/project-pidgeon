@@ -68,6 +68,19 @@ export class ChartComponent implements OnInit {
     }
   }
 
+  calculatePeak(data: any[], peakStartIndex: number, peakEndIndex: number): number {
+  // Calculate the total value of the peak
+  const peakValue = data.slice(peakStartIndex, peakEndIndex + 1).reduce((sum, item) => sum + item.Value, 0);
+
+  // Calculate the "normalized" value
+  const normalizedValue = data.slice(0, peakStartIndex).reduce((sum, item) => sum + item.Value, 0) / peakStartIndex;
+
+  // Calculate the total value of the peak minus the "normalized" value
+  const totalPeakMinusNormalized = peakValue - normalizedValue;
+
+  return totalPeakMinusNormalized;
+}
+
   // Display data for a specific day
   displayDataForDay(selectedDay: string): void {
     if (this.groupedData[selectedDay]) {
@@ -75,6 +88,29 @@ export class ChartComponent implements OnInit {
         ...item,
         Timestamp: new Date(item.Timestamp).toLocaleTimeString('no-NO')
       }));
+
+      // Find the peak start and end points
+      let peakStartIndex = 0;
+      let peakEndIndex = dataForSelectedDay.length - 1;
+      let peakStarted = false;
+      let peakEnded = false;
+
+      for (let i = 1; i < dataForSelectedDay.length; i++) {
+        if (!peakStarted && dataForSelectedDay[i].Value > dataForSelectedDay[i - 1].Value) {
+          peakStartIndex = i;
+          peakStarted = true;
+        }
+
+        if (peakStarted && !peakEnded && dataForSelectedDay[i].Value < dataForSelectedDay[i - 1].Value) {
+          peakEndIndex = i - 1;
+          peakEnded = true;
+        }
+      }
+
+      // Calculate the total peak minus the normalized value
+      const totalPeakMinusNormalized = this.calculatePeak(dataForSelectedDay, peakStartIndex, peakEndIndex);
+
+      this.logger.log('total peak normalized:', totalPeakMinusNormalized);
 
       const highestValueData = dataForSelectedDay.reduce((acc, curr) => {
         if (curr.Value > acc.value) {
@@ -90,6 +126,8 @@ export class ChartComponent implements OnInit {
         // { Timestamp: dataForSelectedDay[dataForSelectedDay.length - 1].Timestamp, PeakValue: highestValueData.value }
       ];
       this.logger.log('highestValue', highestValueData);
+      const totalPeak = dataForSelectedDay.reduce((sum, item) => sum + item.Value, 0);
+      this.logger.log('total peak:', totalPeak);
 
       this.chartOptions = {
         title: { text: "Power peak"},

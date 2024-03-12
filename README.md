@@ -15,8 +15,7 @@ The frontend visualizes how implementing new battery technology can minimize pow
 
 ## Python Script
 
-The Python script converts CSV files to readable JSON files for the power data. It can be run from the command line as follows:
-python convert_csv_to_json.py input.csv output.json
+The Python script converts and sorts the CSV data files containing power data for a set time period to readable JSON files. Data is sorted by day.
 
 ## Getting Started
 

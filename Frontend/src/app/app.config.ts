@@ -31,14 +31,14 @@ export const appConfig: ApplicationConfig = {
         loggerInterceptor
     ])),
     importProvidersFrom(TranslateModule.forRoot({
-        defaultLanguage: 'en',
+        defaultLanguage: 'no',
         loader: {
             provide: TranslateLoader,
             useFactory: createTranslateLoader,
             deps: [HttpClient],
         }
     })),
-    { provide: LOCALE_ID, useValue: 'en' },
+    { provide: LOCALE_ID, useValue: 'no' },
     provideLottieOptions({
       player: () => import('lottie-web'),
     }),

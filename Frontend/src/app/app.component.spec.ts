@@ -22,7 +22,7 @@ describe('AppComponent', () => {
             provide: TranslateLoader,
             useClass: TranslateLoaderMock
           },
-          defaultLanguage: 'en',
+          defaultLanguage: 'no',
           useDefaultLang: true,
           isolate: false
         }),
