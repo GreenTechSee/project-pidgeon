@@ -4,7 +4,6 @@
       <div class="overflow-y-auto">
         <ul class="list-none p-1 m-0">
           @for (item of sidebarItems; track item.label) {
-            @if (item.role <= userRole) {
               <li>
                 @if (item.nestedItems) {
                   <a pRipple pStyleClass="@next" enterFromClass="hidden" enterActiveClass="slidedown" leaveToClass="hidden"
@@ -36,7 +35,6 @@
                   </a>
                 }
               </li>
-            }
           }
         </ul>
       </div>

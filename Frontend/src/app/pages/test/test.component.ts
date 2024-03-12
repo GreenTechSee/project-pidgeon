@@ -5,8 +5,6 @@ import { ButtonModule } from 'primeng/button';
 import { RippleModule } from 'primeng/ripple';
 import { StyleClassModule } from 'primeng/styleclass';
 import { LoggerService } from '../../services/logger.service';
-import { LoginComponent } from '../../components/login/login.component';
-import { ProfileComponent } from '../../components/profile/profile.component';
 
 @Component({
   selector: 'app-test',
@@ -15,9 +13,7 @@ import { ProfileComponent } from '../../components/profile/profile.component';
     ButtonModule, 
     StyleClassModule, 
     TranslateModule, 
-    RippleModule, 
-    LoginComponent,
-    ProfileComponent
+    RippleModule,
   ],
   templateUrl: './test.component.html',
   styleUrl: './test.component.scss'
