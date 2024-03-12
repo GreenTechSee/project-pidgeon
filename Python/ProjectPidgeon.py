@@ -1,7 +1,9 @@
+#Imports the modules "pandas", "json" and "os".
 import pandas as pd
 import json
 import os
 
+#Defines function that reads the csv file and creates a JSON file.
 def csv_to_json_pandas(csv_file):
   df = pd.read_csv(csv_file)
   json_data = df.to_dict(orient='records')
