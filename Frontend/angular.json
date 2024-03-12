@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Secmap-Guard-2": {
+    "Project-Pidgeon": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/secmap-guard-2",
+            "outputPath": "dist/Project-Pidgeon",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -62,10 +62,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "Secmap-Guard-2:build:production"
+              "buildTarget": "Project-Pidgeon:build:production"
             },
             "development": {
-              "buildTarget": "Secmap-Guard-2:build:development"
+              "buildTarget": "Project-Pidgeon:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -73,7 +73,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "Secmap-Guard-2:build"
+            "buildTarget": "Project-Pidgeon:build"
           }
         },
         "test": {
