@@ -1,0 +1,12 @@
+.p-megamenu .p-megamenu-horizontal .p-component {
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: fill-available;
+}
+
+::ng-deep {
+  .p-megamenu-horizontal .p-megamenu-end {
+    margin-left: 0 !important;
+    /* Add !important to make sure it overrides PrimeNG's style */
+  }
+}

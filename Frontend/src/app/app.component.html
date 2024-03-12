@@ -1,0 +1,26 @@
+<!-- Loading spinner -->
+@if (loading()) {
+  <div class="loading-container flex-content-center">
+    <p-progressSpinner ariaLabel="loading">
+    </p-progressSpinner>
+  </div>
+}
+
+@if (!authStore.isAuth() && !loading()) {
+  <div class="surface-card flex align-items-center justify-content-center h-screen-50">
+    <div class="grid justify-content-center m-0">
+      <app-login></app-login>
+    </div>
+  </div>
+}
+
+
+@if (authStore.isAuth() && !loading()) {
+  <app-topbar></app-topbar>
+  <section class="container">
+    <app-sidebar class="sidebar"></app-sidebar>
+    <div class="main-body">
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+}

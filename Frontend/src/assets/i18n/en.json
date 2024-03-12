@@ -1,0 +1,17 @@
+{
+  "test": "This is a test",
+  "login": {
+    "welcomeMessage": "Welcome to Pidgeon!"
+  },
+  "formCtrl": {
+    "email": {
+      "required": "Please enter your email address",
+      "email": "Please enter a valid email address"
+    },
+    "password": {
+      "required": "Please enter your password",
+      "minlength": "Your password must be at least 8 characters long",
+      "maxlength": "Your password must be less than 40 characters long"
+    }
+  }
+}

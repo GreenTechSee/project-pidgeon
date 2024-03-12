@@ -1,0 +1,23 @@
+.loading-container {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 5;
+}
+
+.container {
+  display: flex;
+}
+
+.container .main-body {
+  width: 100%;
+  margin-left: 20px;
+}
+
+.container .sidebar {
+  transition: all 0.5s;
+}

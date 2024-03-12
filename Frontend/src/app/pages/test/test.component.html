@@ -1,0 +1,24 @@
+<span class="p-buttonset">
+  <button aria-label="Save" pButton pRipple label="Save" icon="pi pi-check"></button>
+  <button aria-label="Delete" pButton pRipple label="Delete" icon="pi pi-trash"></button>
+  <button pButton pRipple label="Cancel" icon="pi pi-times"></button>
+</span>
+
+<div class="mt-3">
+  <button aria-label="Show" pButton label="Show" class="mr-2" pStyleClass=".box" enterFromClass="hidden"
+    enterActiveClass="fadein"></button>
+  <button aria-label="Hide" pButton label="Hide" pStyleClass=".box" leaveActiveClass="fadeout" leaveToClass="hidden"></button>
+</div>
+
+<div class="hidden animation-duration-500 box">
+  <div
+    class="flex bg-green-500 text-white align-items-center justify-content-center py-3 border-round-md mt-3 font-bold shadow-2 w-8rem h-8rem">
+    Content</div>
+</div>
+
+<div>
+  <p>{{ 'test' | translate }}</p>
+</div>
+
+<app-login></app-login>
+<app-profile></app-profile>
