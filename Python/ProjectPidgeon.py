@@ -1,6 +1,18 @@
 import pandas as pd
 import json
 
+def draw_easter_egg():
+    print("  ________  ")
+    print(" /        \ ")
+    print("|/\/\/\/\/\|")
+    print("|          |")
+    print("|  O    O  |")
+    print("|          |")
+    print("|    \/    |")		
+    print("|          |")
+    print("|/\/\/\/\/\|")
+    print("\\_________/")
+
 #Function that converts the CSV data into JSON.
 def csv_to_json(csv_file):
     #Reads the CSV file into a DataFrame.
@@ -31,3 +43,5 @@ json_data = csv_to_json(csv_file)
 #Exports the JSON data by creating a JSON file in the current directory.
 with open(f'{filename}.json', 'w', encoding='utf-8') as output_file:
     output_file.write(json.dumps(json_data, indent=4))
+
+draw_easter_egg()
