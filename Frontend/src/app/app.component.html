@@ -9,10 +9,12 @@
 
 @if (!loading()) {
   <!-- <app-topbar></app-topbar> -->
-  <div class="primary-background w-full h-4rem flex align-items-center justify-content-between">
-    <div class="p-1 cursor-pointer">
-      <img src="../../../assets/images/blocks/logos/pp-logo.svg" alt="logo" aria-hidden="true" height="40" class="mr-2"
-        (click)="navigateToHome()" />
+  <div class="primary-background w-full h-5rem flex align-items-center justify-content-between">
+    <div class="p-1 cursor-pointer w-2 p-1">
+      <ng-lottie class="mt-1" alt="animated logo" [options]="lottieOptions" (animationCreated)="animationCreated($event)"
+        (click)="navigateToHome()"></ng-lottie>
+      <!-- <img src="../../../assets/images/blocks/logos/pp-logo.svg" alt="logo" aria-hidden="true" height="40" class="mr-2"
+        (click)="navigateToHome()" /> -->
     </div>
     <div class="mr-2">
       <p-selectButton #lang [options]="langOptions" optionLabel="language" (onOptionClick)="setLanguage(lang.value)"></p-selectButton>
@@ -36,4 +38,7 @@
       <router-outlet></router-outlet>
     </div>
   </section>
+  <div class="background-primary2 w-full flex align-items-center justify-content-center">
+    <p class="m-0">© 2024, Project Pidgeon. All rights reserved.</p>
+  </div>
 }

@@ -6,11 +6,20 @@ import { MegaMenuModule } from 'primeng/megamenu';
 import { MegaMenuItem } from 'primeng/api';
 import { ChipModule } from 'primeng/chip';
 import { Router } from '@angular/router';
+import { AnimationItem } from 'lottie-web';
+import { LottieComponent, AnimationOptions } from 'ngx-lottie';
 
 @Component({
   selector: 'app-topbar',
   standalone: true,
-  imports: [MenubarModule, ButtonModule, MessagesModule, MegaMenuModule, ChipModule],
+  imports: [
+    MenubarModule, 
+    ButtonModule, 
+    MessagesModule, 
+    MegaMenuModule, 
+    ChipModule,
+    LottieComponent
+  ],
   templateUrl: './topbar.component.html',
   styleUrl: './topbar.component.scss'
 })
@@ -42,10 +51,19 @@ export class TopbarComponent {
     
   ];
 
+  lottieOptions: AnimationOptions = {
+    path: '../../assets/anim/pp-lottie.json',
+
+  }
+
   constructor(private router: Router) { }
 
   navigateToHome() {
     this.router.navigate(['/']);
+  }
+
+  animationCreated(animationItem: AnimationItem): void {
+    console.log(animationItem);
   }
 
 }

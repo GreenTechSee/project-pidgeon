@@ -1,5 +1,6 @@
 <p-megaMenu [model]="menuItems" styleClass="flex flex-row-reverse justify-content-between w-fill-available">
   <ng-template pTemplate="end" styleClass="logo-container">
-    <img src="../../../assets/images/blocks/logos/pp-logo.svg" alt="logo" aria-hidden="true" height="40" class="mr-2" (click)="navigateToHome()" />
+    <ng-lottie alt="animated logo" [options]="lottieOptions" (animationCreated)="animationCreated($event)" (click)="navigateToHome()"></ng-lottie>
+    <!-- <img src="../../../assets/images/blocks/logos/pp-logo.svg" alt="logo" aria-hidden="true" height="40" class="mr-2" (click)="navigateToHome()" /> -->
   </ng-template>
 </p-megaMenu>

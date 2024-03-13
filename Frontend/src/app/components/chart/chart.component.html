@@ -49,16 +49,16 @@
     
     <div class="flex flex-row justify-content-center align-items-center mt-3">
       <div id="b1" [class.green-border]="userTotal !== 0 && userTotal <= 50" class="primary2-background border-3 p-2">
-        <p class="primary-color">{{'recommendation.b1' | translate }}</p>
-        <p class="primary-color">{{'recommendation.readMore' | translate }}</p>
+        <p class="secondary-color">{{'recommendation.b1' | translate }}</p>
+        <p class="primary-color"><a class="linkz" href="https://www.altechgroup.com/products/cerenergy-solid-state-scss-battery/">{{'recommendation.readMore' | translate }}</a></p>
       </div>
       <div id="b2" [class.green-border]="userTotal > 50 && userTotal <= 100" class="primary2-background border-3 p-2 ml-2">
-        <p class="primary-color">{{'recommendation.b2' | translate }}</p>
-        <p class="primary-color">{{'recommendation.readMore' | translate }}</p>
+        <p class="secondary-color">{{'recommendation.b2' | translate }}</p>
+        <p class="primary-color"><a class="linkz" href="https://www.altechgroup.com/products/cerenergy-solid-state-scss-battery/">{{'recommendation.readMore' | translate }}</a></p>
       </div>
       <div id="b3" [class.green-border]="userTotal >= 200" class="primary2-background border-3 p-2 ml-2">
-        <p class="primary-color">{{'recommendation.b3' | translate }}</p>
-        <p class="primary-color">{{'recommendation.readMore' | translate }}</p>
+        <p class="secondary-color">{{'recommendation.b3' | translate }}</p>
+        <p class="primary-color"><a class="linkz" href="https://www.altechgroup.com/products/cerenergy-solid-state-scss-battery/">{{'recommendation.readMore' | translate }}</a></p>
       </div>
     </div>
     @if (responseText !== "") {

@@ -10,6 +10,8 @@ import { LoggerService } from './services/logger.service';
 import { TopbarComponent } from './components/topbar/topbar.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SelectButtonModule } from 'primeng/selectbutton';
+import { AnimationItem } from 'lottie-web';
+import { LottieComponent, AnimationOptions } from 'ngx-lottie';
 
 @Component({
     selector: 'app-root',
@@ -23,7 +25,8 @@ import { SelectButtonModule } from 'primeng/selectbutton';
       TopbarComponent, 
       SidebarComponent,
       TranslateModule,
-      SelectButtonModule
+      SelectButtonModule,
+      LottieComponent
     ]
 })
 export class AppComponent implements OnInit {
@@ -32,6 +35,11 @@ export class AppComponent implements OnInit {
   loading = signal(true);
   isLoggedIn: WritableSignal<boolean> = signal(false);
   langOptions: any[];
+
+  lottieOptions: AnimationOptions = {
+    path: '../assets/anim/pp-lottie.json',
+
+  }
 
   constructor(
     private primengConfig: PrimeNGConfig,
@@ -75,5 +83,9 @@ export class AppComponent implements OnInit {
     this.tr.use(languageCode);
     this.logger.log('Language set to:', languageCode);
     this.logger.log('defaultLang:', this.tr.getDefaultLang())
+  }
+
+  animationCreated(animationItem: AnimationItem): void {
+    console.log(animationItem);
   }
 }
