@@ -11,7 +11,7 @@ def draw_easter_egg():
     print("|    \/    |")		
     print("|          |")
     print("|/\/\/\/\/\|")
-    print("\\_________/")
+    print(" \________/")
 
 #Function that converts the CSV data into JSON.
 def csv_to_json(csv_file):
