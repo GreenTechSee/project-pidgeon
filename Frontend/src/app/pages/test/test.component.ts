@@ -33,7 +33,7 @@ export class TestComponent {
 
   //lottie
   lottieOptions: AnimationOptions = {
-    path: '../../assets/anim/pp-lottie.json',
+    path: '../../assets/anim/pp-lottie-white.json',
     
   }
 
