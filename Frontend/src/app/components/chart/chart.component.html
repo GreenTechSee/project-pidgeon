@@ -3,8 +3,8 @@
     <p-tabView styleClass="tabview-custom">
       <p-tabPanel>
         <ng-template pTemplate="header">
-          <i class="pi pi-calendar"></i>
-          <span>{{'calc.business' | translate }}</span>
+          <i class="pi pi-building"></i>
+          <span class="ml-1">{{'calc.business' | translate }}</span>
         </ng-template>
         @if (!loading) {
           <div class="flex flex-column align-items-center justify-content-center">
@@ -18,7 +18,7 @@
       <p-tabPanel header="Privat">
         <ng-template pTemplate="header">
           <i class="pi pi-user"></i>
-          <span>{{'calc.private' | translate }}</span>
+          <span class="ml-1">{{'calc.private' | translate }}</span>
         </ng-template>
         @if (!loading) {
         <div class="flex flex-column align-items-center justify-content-center">
@@ -26,39 +26,43 @@
             <ag-charts-angular style="height: 100%;" [options]="chartOptionsPrivate">
             </ag-charts-angular>
           </div>
-          <div class="">
-            <input type="number" #peak placeholder="peak value" />
-            <input type="number" #peakLength placeholder="peak length" />
-            <input type="number" #average placeholder="average" />
-            <button type="button" (click)="sendPeakData(peak.value, peakLength.value, average.value)">Send</button>
+          <div class="mt-1">
+            <input class="inputz" pInputText type="number" #peak placeholder="peak value" />
+            <input class="inputz ml-1" pInputText type="number" #peakLength placeholder="peak length" />
+            <input class="inputz ml-1" pInputText type="number" #average placeholder="average" />
+            <button class="ml-1" pButton type="button" (click)="sendPeakData(peak.value, peakLength.value, average.value)">Send</button>
           </div>
+          @if (peak.value === "1337") {
+            <img class="mt-3" src="../../../assets/images/easter/iseeu.jpg" alt="hehe">
+          }
         </div>
         }
       </p-tabPanel>
     </p-tabView>
+    
 
     
   </div>
 </div>
 <div class="mt-3 w-full flex align-items-center justify-content-center battery-picker">
   <div class="w-8 flex flex-column align-items-center justify-content-center">
-    <div class="secondary-background p-2 border-round">
-      <p>{{'recommendation.text' | translate }}</p>
+    <div class="secondary-background p-2 border-round px-5">
+      <p class="font-bold">{{'recommendation.text' | translate }}</p>
       <p>{{'recommendation.text2' | translate }}</p>
     </div>
     
-    <div class="flex flex-row justify-content-center align-items-center mt-3">
-      <div id="b1" [class.green-border]="userTotal !== 0 && userTotal <= 50" class="primary2-background border-3 p-2">
-        <p class="secondary-color">{{'recommendation.b1' | translate }}</p>
-        <p class="primary-color"><a class="linkz" href="https://www.altechgroup.com/products/cerenergy-solid-state-scss-battery/">{{'recommendation.readMore' | translate }}</a></p>
+    <div class="flex flex-row justify-content-center align-items-center mt-5">
+      <div id="b1" [class.green-border]="userTotal !== 0 && userTotal <= 100" class="primary2-background p-2 border-round">
+        <p class="secondary-color pt-4 px-2 font-bold">{{'recommendation.b1' | translate }}</p>
+        <p class="primary-color px-2"><a class="linkz" href="https://www.spinningenergy.com/" target="_blank">{{'recommendation.readMore' | translate }}</a></p>
       </div>
-      <div id="b2" [class.green-border]="userTotal > 50 && userTotal <= 100" class="primary2-background border-3 p-2 ml-2">
-        <p class="secondary-color">{{'recommendation.b2' | translate }}</p>
-        <p class="primary-color"><a class="linkz" href="https://www.altechgroup.com/products/cerenergy-solid-state-scss-battery/">{{'recommendation.readMore' | translate }}</a></p>
+      <div id="b2" [class.green-border]="userTotal > 100 && userTotal <= 500" class="primary2-background p-2 ml-4 border-round">
+        <p class="secondary-color pt-4 px-2 font-bold">{{'recommendation.b2' | translate }}</p>
+        <p class="primary-color px-2"><a class="linkz" href="https://www.altechgroup.com/products/cerenergy-solid-state-scss-battery/" target="_blank">{{'recommendation.readMore' | translate }}</a></p>
       </div>
-      <div id="b3" [class.green-border]="userTotal >= 200" class="primary2-background border-3 p-2 ml-2">
-        <p class="secondary-color">{{'recommendation.b3' | translate }}</p>
-        <p class="primary-color"><a class="linkz" href="https://www.altechgroup.com/products/cerenergy-solid-state-scss-battery/">{{'recommendation.readMore' | translate }}</a></p>
+      <div id="b3" [class.green-border]="userTotal >= 1000" class="primary2-background p-2 ml-4 border-round">
+        <p class="secondary-color pt-4 px-2 font-bold">{{'recommendation.b3' | translate }}</p>
+        <p class="primary-color px-2"><a class="linkz" href="https://www.quantumscape.com/" target="_blank">{{'recommendation.readMore' | translate }}</a></p>
       </div>
     </div>
     @if (responseText !== "") {

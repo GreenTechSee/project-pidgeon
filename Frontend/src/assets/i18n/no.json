@@ -7,14 +7,14 @@
   },
   "calc": {
     "business": "Bedrift",
-    "private": "Privat",
+    "private": "Manuell",
     "yourPeak": "Din peak",
     "powerPeak": "Effekttopp (kW)"
   },
   "recommendation": {
-    "b1": "Batteri 50 KW",
-    "b2": "Batteri 75 KW",
-    "b3": "Batteri 100 KW",
+    "b1": "Batteri 100 KW",
+    "b2": "Batteri 500 KW",
+    "b3": "Batteri 1000 KW",
     "readMore": "Les mer",
     "text": "Dine muligheter basert på dine data",
     "text2": "Nedenfor ser du dine muligheter basert på peak point, varighet og antall nødvendig KW."

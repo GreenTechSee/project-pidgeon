@@ -7,6 +7,8 @@ import { Papa } from 'ngx-papaparse';
 import { TabViewModule } from 'primeng/tabview';
 import { StyleClassModule } from 'primeng/styleclass';
 import { TranslateModule } from '@ngx-translate/core';
+import { InputTextModule } from 'primeng/inputtext';
+import { ButtonModule } from 'primeng/button';
 
 interface ChartData {
   Timestamp: string;
@@ -25,7 +27,9 @@ interface ResponseText {
     HttpClientModule, 
     TabViewModule, 
     StyleClassModule,
-    TranslateModule
+    TranslateModule,
+    InputTextModule,
+    ButtonModule
   ],
   templateUrl: './chart.component.html',
   styleUrl: './chart.component.scss'
@@ -56,7 +60,7 @@ export class ChartComponent implements OnInit {
     const total = peakNumber * peakLengthNumber;
     this.logger.log('button clicked, val:', peakNumber, peakLengthNumber, averageNumber, total);
     this.calculateUserPeak(peakNumber, peakLengthNumber, averageNumber);
-    this.userTotal = total;
+    this.userTotal = total / 12;
     this.logger.log('userTotal:', this.userTotal);
     // const body = {
     //   total: total
