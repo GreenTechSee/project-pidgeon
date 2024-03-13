@@ -9,10 +9,24 @@
 
 @if (!loading()) {
   <!-- <app-topbar></app-topbar> -->
-  <div class="primary-background w-full h-4rem flex align-items-center">
+  <div class="primary-background w-full h-4rem flex align-items-center justify-content-between">
     <div class="p-1 cursor-pointer">
       <img src="../../../assets/images/blocks/logos/pp-logo.svg" alt="logo" aria-hidden="true" height="40" class="mr-2"
         (click)="navigateToHome()" />
+    </div>
+    <div class="mr-2">
+      <p-selectButton #lang [options]="langOptions" optionLabel="language" (onOptionClick)="setLanguage(lang.value)"></p-selectButton>
+    </div>
+  </div>
+  <div class="primary2-background">
+    <div class="flex flex-row">
+      <div class="p-5" style="width: 50%;">
+        <h1 class="primary-color">{{'hero.header' | translate}}</h1>
+      </div>
+      <div class="p-5" style="width: 50%;">
+        <p class="font-semibold primary-color">{{'hero.text1' | translate}}</p>
+        <p class="font-semibold primary-color">{{'hero.text2' | translate}}</p>
+      </div>
     </div>
   </div>
   <section class="container">

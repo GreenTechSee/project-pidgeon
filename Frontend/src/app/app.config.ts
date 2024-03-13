@@ -31,7 +31,6 @@ export const appConfig: ApplicationConfig = {
         loggerInterceptor
     ])),
     importProvidersFrom(TranslateModule.forRoot({
-        defaultLanguage: 'no',
         loader: {
             provide: TranslateLoader,
             useFactory: createTranslateLoader,

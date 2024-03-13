@@ -1,17 +1,19 @@
 {
   "test": "Dette er en test",
-  "login": {
-    "welcomeMessage" : "Velkommen til Pidgeon!"
+  "hero": {
+    "header": "Kalkuler din løsning for peak-shaving",
+    "text1": "Peak Pidgeon er en praktisk løsning for kunder som søker etter effektiv beregning av peak-shaving.",
+    "text2": "Vi tilbyr analyseverktøy og rådgivningstjenester for å optimalisere batterikapasiteten og bidra til å redusere strømforbruktopper."
   },
-  "formCtrl": {
-    "email": {
-      "required": "Vennligst skriv inn e-postadressen din",
-      "email": "Vennligst skriv inn en gyldig e-postadresse"
-    },
-    "password": {
-      "required": "Vennligst skriv inn passordet ditt",
-      "minlength": "Passordet ditt må være minst 8 tegn langt",
-      "maxlength": "Passordet ditt må være mindre enn 40 tegn langt"
-    }
+  "calc": {
+    "business": "Bedrift",
+    "private": "Privat",
+    "yourPeak": "Din peak",
+    "powerPeak": "Effekttopp (kW)"
+  },
+  "recommendation": {
+    "b1": "Batteri 1 er anbefalt!",
+    "b2": "Batteri 2 er anbefalt!",
+    "b3": "Batteri 3 er anbefalt!"
   }
 }

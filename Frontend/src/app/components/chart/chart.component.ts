@@ -3,46 +3,150 @@ import { AgChartsAngular } from 'ag-charts-angular';
 import { AgChartOptions } from 'ag-charts-community';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { LoggerService } from '../../services/logger.service';
+import { Papa } from 'ngx-papaparse';
+import { TabViewModule } from 'primeng/tabview';
+import { StyleClassModule } from 'primeng/styleclass';
+import { TranslateModule } from '@ngx-translate/core';
 
 interface ChartData {
   Timestamp: string;
   Value: number;
 }
 
+interface ResponseText {
+  text: string;
+}
+
 @Component({
   selector: 'app-chart',
   standalone: true,
-  imports: [AgChartsAngular, HttpClientModule],
+  imports: [
+    AgChartsAngular,
+    HttpClientModule, 
+    TabViewModule, 
+    StyleClassModule,
+    TranslateModule
+  ],
   templateUrl: './chart.component.html',
   styleUrl: './chart.component.scss'
 })
 export class ChartComponent implements OnInit {
   logger = inject(LoggerService)
   public chartOptions: AgChartOptions = {};
+  public chartOptionsPrivate: AgChartOptions = {};
   // public chartOptions2: AgChartOptions = {};
   chartDataArray!: ChartData[];
   groupedData: { [key: string]: ChartData[] } = {};
   firstGroupedDay: string | null = null;
   loading = true;
+  filename = 'Steamanlegg_elkjel';
+  responseText: string = "";
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private papa: Papa) { }
 
   ngOnInit(): void {
     this.loadData();
   }
 
+  sendPeakData(peak: string, peakLength: string, average: string) {
+    const peakNumber = +peak;
+    const peakLengthNumber = +peakLength;
+    const averageNumber = +average;
+    const total = peakNumber * peakLengthNumber;
+    this.logger.log('button clicked, val:', peakNumber, peakLengthNumber, averageNumber, total);
+    this.calculateUserPeak(peakNumber, peakLengthNumber, averageNumber);
+    const body = {
+      total: total
+    }
+    
+    this.http.post<ResponseText>(`http://localhost:5678/webhook/peakData`, body).subscribe(data => {
+      console.log(data);
+      if (data) {
+        this.responseText = data.text;
+      }
+    })
+
+  }
+
+  calculateUserPeak(peakNumber: number, peakLengthNumber: number, averageNumber: number) {
+    const timestamps: string[] = [];
+    const startTime = new Date();
+    startTime.setHours(0, 0, 0, 0);
+    const interval = 30; // 30 minutes interval
+    const numberOfTimestamps = 24 * 60 / interval; // Total number of timestamps in a day
+
+    for (let i = 0; i < numberOfTimestamps; i++) {
+      // Create a new timestamp by adding the interval to the previous timestamp
+      const timestamp = new Date(startTime.getTime() + i * interval * 60000).toLocaleTimeString('no-NO'); // Convert interval to milliseconds
+      timestamps.push(timestamp);
+    }
+
+    // Generate data points
+    const simulatedData = [];
+    const peakStartIndex = 14; // peak at 7am for simulating start of day
+    const peakEndIndex = peakStartIndex + peakLengthNumber - 1;
+
+    for (let i = 0; i < numberOfTimestamps; i++) {
+      let value;
+
+      // Calculate the value based on the current timestamp
+      if (i < peakStartIndex) {
+        // Before the peak
+        value = averageNumber;
+      } else if (i <= peakEndIndex) {
+        // During the peak
+        value = peakNumber;
+      } else {
+        // After the peak
+        value = averageNumber;
+      }
+
+      simulatedData.push({ Timestamp: timestamps[i], Value: value });
+    }
+
+    // Update chart options with the simulated data
+    this.chartOptionsPrivate = {
+      title: { text: "Power peak (kW)" },
+      subtitle: { text: `Your peak` },
+      data: simulatedData,
+      series: [
+        {
+          type: 'line',
+          xKey: 'Timestamp',
+          yKey: 'Value',
+        }
+      ],
+    };
+  }
+
   // Load data from JSON file
+  // loadData(): void {
+  //   this.http.get<ChartData[]>('assets/data/JSON.json').subscribe(data => {
+  //     this.chartDataArray = data;
+  //     this.groupDataByDay();
+  //     this.getFirstGroupedDay();
+  //   });
+  // }
+
   loadData(): void {
-    this.http.get<ChartData[]>('assets/data/JSON.json').subscribe(data => {
-      this.chartDataArray = data;
+    this.http.get(`assets/data/csv/${this.filename}.csv`, { responseType: 'text' }).subscribe(data => {
+      this.chartDataArray = this.parseCSVData(data);
       this.groupDataByDay();
       this.getFirstGroupedDay();
     });
   }
 
+  parseCSVData(csvData: string): ChartData[] {
+    const parsedData = this.papa.parse(csvData, { header: true }).data;
+    return parsedData.map((row: any) => ({
+      Timestamp: row.Timestamp,
+      Value: parseFloat(row.Value)
+    }));
+  }
+
   // Group data by day
   groupDataByDay(): void {
-    this.chartDataArray.forEach(item => {
+    this.chartDataArray.forEach((item) => {
       const day = new Date(item.Timestamp).toLocaleDateString('en-US', {
         year: 'numeric',
         month: '2-digit',
@@ -131,7 +235,7 @@ export class ChartComponent implements OnInit {
 
       this.chartOptions = {
         title: { text: "Power peak"},
-        subtitle: { text: `Data from Oppdrett - ${this.firstGroupedDay}`},
+        subtitle: { text: `Data from ${this.filename} - ${this.firstGroupedDay}`},
         data: dataForSelectedDay,
         series: [
           {
@@ -155,5 +259,7 @@ export class ChartComponent implements OnInit {
       console.error('Data for selected day does not exist.');
     }
   }
+
+  
 
 }

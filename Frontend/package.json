@@ -29,6 +29,7 @@
     "lottie-web": "^5.12.2",
     "ngx-cookie-service": "^17.1.0",
     "ngx-lottie": "^11.0.1",
+    "ngx-papaparse": "^8.0.0",
     "ngx-translate-testing": "^7.0.0",
     "ngxtension": "^2.1.0",
     "primeflex": "^3.3.1",
