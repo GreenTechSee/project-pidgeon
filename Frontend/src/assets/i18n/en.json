@@ -12,8 +12,11 @@
     "powerPeak": "Power peak (kW)"
   },
   "recommendation": {
-    "b1": "Battery 1 is recommended!",
-    "b2": "Battery 2 is recommended!",
-    "b3": "Battery 3 is recommended!"
+    "b1": "Battery 50 KW",
+    "b2": "Battery 75 KW",
+    "b3": "Battery 100 KW",
+    "readMore": "Read more",
+    "text": "Your opportunities based on your data",
+    "text2": "Below you can see your opportunities based on peak points, duration, and the number of KW required."
   }
 }

@@ -41,6 +41,7 @@ export class ChartComponent implements OnInit {
   loading = true;
   filename = 'Steamanlegg_elkjel';
   responseText: string = "";
+  userTotal: number = 0;
 
   constructor(private http: HttpClient, private papa: Papa) { }
 
@@ -55,16 +56,18 @@ export class ChartComponent implements OnInit {
     const total = peakNumber * peakLengthNumber;
     this.logger.log('button clicked, val:', peakNumber, peakLengthNumber, averageNumber, total);
     this.calculateUserPeak(peakNumber, peakLengthNumber, averageNumber);
-    const body = {
-      total: total
-    }
+    this.userTotal = total;
+    this.logger.log('userTotal:', this.userTotal);
+    // const body = {
+    //   total: total
+    // }
     
-    this.http.post<ResponseText>(`http://localhost:5678/webhook/peakData`, body).subscribe(data => {
-      console.log(data);
-      if (data) {
-        this.responseText = data.text;
-      }
-    })
+    // this.http.post<ResponseText>(`http://localhost:5678/webhook-test/peakValue`, total).subscribe(data => {
+    //   console.log(data);
+    //   if (data) {
+    //     this.responseText = data.text;
+    //   }
+    // })
 
   }
 

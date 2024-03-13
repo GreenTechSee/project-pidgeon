@@ -5,3 +5,33 @@
 .tabview-custom {
   max-width: 500px;
 }
+
+.green-border {
+  border: 3px solid #CCFFBB;
+}
+
+.battery-picker {
+  background-size: contain;
+  background-repeat: no-repeat;
+  background: url('../../../assets/images/blocks/backgrounds/BG_bilde_small.png');
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  height: 400px;
+  width: 100%;
+}
+
+.triangle {
+  position: absolute;
+  top: -20px;
+  /* Adjust this value to position the triangle above the element */
+  left: 50%;
+  /* Center the triangle horizontally */
+  transform: translateX(-50%);
+  /* Adjust this value to fine-tune the horizontal position */
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid green;
+  /* Adjust this value to change the color of the triangle */
+}

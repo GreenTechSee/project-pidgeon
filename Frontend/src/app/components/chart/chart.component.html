@@ -36,22 +36,35 @@
         }
       </p-tabPanel>
     </p-tabView>
+
+    
+  </div>
+</div>
+<div class="mt-3 w-full flex align-items-center justify-content-center battery-picker">
+  <div class="w-8 flex flex-column align-items-center justify-content-center">
+    <div class="secondary-background p-2 border-round">
+      <p>{{'recommendation.text' | translate }}</p>
+      <p>{{'recommendation.text2' | translate }}</p>
+    </div>
     
     <div class="flex flex-row justify-content-center align-items-center mt-3">
-      <div class="primary2-background border-3 p-2">
+      <div id="b1" [class.green-border]="userTotal !== 0 && userTotal <= 50" class="primary2-background border-3 p-2">
         <p class="primary-color">{{'recommendation.b1' | translate }}</p>
+        <p class="primary-color">{{'recommendation.readMore' | translate }}</p>
       </div>
-      <div class="primary2-background border-3 p-2 ml-2">
+      <div id="b2" [class.green-border]="userTotal > 50 && userTotal <= 100" class="primary2-background border-3 p-2 ml-2">
         <p class="primary-color">{{'recommendation.b2' | translate }}</p>
+        <p class="primary-color">{{'recommendation.readMore' | translate }}</p>
       </div>
-      <div class="primary2-background border-3 p-2 ml-2">
+      <div id="b3" [class.green-border]="userTotal >= 200" class="primary2-background border-3 p-2 ml-2">
         <p class="primary-color">{{'recommendation.b3' | translate }}</p>
+        <p class="primary-color">{{'recommendation.readMore' | translate }}</p>
       </div>
     </div>
     @if (responseText !== "") {
-      <div class="flex flex-column justify-content-center align-items-center">
-        <p>{{responseText}}</p>
-      </div>
+    <div class="flex flex-column justify-content-center align-items-center">
+      <p>{{responseText}}</p>
+    </div>
     }
   </div>
 </div>

@@ -12,8 +12,11 @@
     "powerPeak": "Effekttopp (kW)"
   },
   "recommendation": {
-    "b1": "Batteri 1 er anbefalt!",
-    "b2": "Batteri 2 er anbefalt!",
-    "b3": "Batteri 3 er anbefalt!"
+    "b1": "Batteri 50 KW",
+    "b2": "Batteri 75 KW",
+    "b3": "Batteri 100 KW",
+    "readMore": "Les mer",
+    "text": "Dine muligheter basert på dine data",
+    "text2": "Nedenfor ser du dine muligheter basert på peak point, varighet og antall nødvendig KW."
   }
 }
